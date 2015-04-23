@@ -1,29 +1,48 @@
 #Codebook
 
-Note that the order of steps is a bit different from the description of the assignment. It is easier to first label the data set features (step 4) and then filtering the measurements using column names (step 2)
 
+This codebook describes the Run Analysis project, which is part of Coursera's [Getting and Cleaning Data course](https://class.coursera.org/getdata-013).
 
+The project uses data from the [Human Activity Recognition Using Smartphones Data Set](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones#), which contains the test results from experiments that have been carried out with a group of 30 volunteers within an age bracket of 19-48 years. Each person performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist. Using its embedded accelerometer and gyroscope, we captured 3-axial linear acceleration and 3-axial angular velocity at a constant rate of 50Hz. The experiments have been video-recorded to label the data manually. The obtained dataset has been randomly partitioned into two sets, where 70% of the volunteers was selected for generating the training data and 30% the test data.  
 
-### The raw data
-
-
-### The tidy data set
 
 
 ## Study design
 
-description of how the data was collected
+The run_analysis.R file collects the raw data and processes and outputs it into an tidy format. The following steps are executed:
+
+1. Download and unzip the files from the raw dataset
+2. Merge all files in the 'test' and 'train' directories to create 1 dataset
+3. Label the column names using the file 'features.txt'
+4. Extract the measurements for mean and standard deviation
+5. Label the activities with descriptive names using the file 'activity_labels.txt'
+6. Aggregate the data by computing the mean for each combination of activity and subject
+7. Write the resulting tidy data set to file 'tidydata.txt'
+
+
+
+## The raw data
+
+Raw data was obtained from https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip 
+
+The files used in this process were:
+
+* /train/y_train.txt
+* /train/X_train.txt
+* /train/subject_train.txt
+* /test/y_test.txt
+* /test/X_test.txt
+* /test/subject_test.txt
+* features.txt
+* activity_labels.txt
+
+A full description of the raw dataset can be found in the file features_info.txt, which is part of the dataset, or at http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones# 
+
+
 
 ## Codebook
 
-description of each variable and its units
-
-Information about the variables (including units!) in the data set not contained in the tidy data
-Information about the summary choices you made
-Information about the experimental study design you used
-
-
-This codebook was generated using the [memisc package](http://cran.r-project.org/web/packages/memisc/memisc.pdf)
+The file 'tidydata.txt' contains the aggregated tidy data set. This section describes each variable and its units. This codebook section was generated using the [memisc package](http://cran.r-project.org/web/packages/memisc/memisc.pdf)
 
 
 ===============================================================================================================================================================
@@ -34,16 +53,16 @@ This codebook was generated using the [memisc package](http://cran.r-project.org
 
    Storage mode: integer
    Measurement: nominal
-
+```
           Values and labels    N    Percent 
-                                            
+                                           
    1   'WALKING'              30   16.7 16.7
    2   'WALKING_UPSTAIRS'     30   16.7 16.7
    3   'WALKING_DOWNSTAIRS'   30   16.7 16.7
    4   'SITTING'              30   16.7 16.7
    5   'STANDING'             30   16.7 16.7
    6   'LAYING'               30   16.7 16.7
-
+```
 ===============================================================================================================================================================
 
    out.subject
